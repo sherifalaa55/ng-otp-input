@@ -37,3 +37,6 @@ jobs:
         uses:  'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_COMMIT-MESSAGE: "minor"
+        with:
+          minor-wording:  'add,Adds,new,minor'
