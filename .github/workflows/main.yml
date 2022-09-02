@@ -10,6 +10,13 @@ on:
     inputs:
       tag:
         required: true
+      versionType:
+        type: choice
+        description: Select the version to bump
+        options: 
+        - major
+        - minor
+        - patch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,9 +41,8 @@ jobs:
           echo test, and deploy your project.
           
       - name:  'Automated Version Bump'
-        uses:  'phips28/gh-action-bump-version@master'
+        uses:  'sherifalaa55/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INPUT_COMMIT-MESSAGE: "minor"
         with:
-          minor-wording:  'add,Adds,new,minor'
+          version-type:  ${{ github.event.inputs.versionType }}
